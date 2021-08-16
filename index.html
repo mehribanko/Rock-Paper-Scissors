@@ -1,0 +1,97 @@
+<html>
+
+    <head>
+        <title>Rock Paper Scissor Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class='container'>
+        <h2>Select rock, paper or scissor! See who wins? </h2> 
+        <div class='score'></div>
+        <div class='message'></div>
+
+        <button type="button">Rock</button>
+        <button type="button">Paper</button>
+        <button type="button">Scissors</button>
+    
+
+        </div>
+
+    <script>
+        const score=document.querySelector('.score');
+        const buttons=document.querySelectorAll('button');
+        const message=document.querySelector('.message');
+        let winner=[0,0];
+       
+        for(i=0; i<buttons.length; i++){
+            buttons[i].addEventListener('click', playGame);
+        }
+
+        function playGame(e){
+            let playerSelection= e.target.innerText;
+            let compSelection=Math.random();
+         
+            if(compSelection<0.34){
+                compSelection='Rock';
+            }else if(compSelection<=0.67){
+                compSelection='Paper';
+            }else{
+                compSelection='Scissors';
+            }
+            
+            let result=checkWinner(playerSelection, compSelection);
+            console.log(result);
+            if (result=='Player'){
+                result +=' wins!';
+                winner[0]++;
+            }else if(result=='Computer'){
+                result+=' wins!';
+                winner[1]++;
+            }else{
+                result+=' results in a tie match!';
+            }
+            score.innerHTML='You ['+winner[0]+'], Computer ['+winner[1]+']';
+            messager(playerSelection+' vs '+compSelection+'<br><b>'+result+'<b>');
+        }
+
+        function messager(mes){
+            message.innerHTML=mes;
+        }
+        
+
+
+            function checkWinner(pl,co){
+                if(pl===co){
+                    return 'Draw';
+                }
+                if(pl==='Rock'){
+                    if(co==='Paper'){
+                        return 'Computer';
+                    }else{
+                        return 'Player';
+                    }
+                }
+                if(pl==='Paper'){
+                    if(co==='Scissors'){
+                        return 'Computer';
+                    }else{
+                        return 'Player';
+                    }
+                }
+
+                if(pl==='Scissors'){
+                    if(co==='Rock'){
+                        return 'Computer';
+                    }else{
+                        return 'Player';
+                    }
+                }
+                
+
+            }
+    </script>
+        
+
+    </body>
+</html>

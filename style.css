@@ -1,0 +1,13 @@
+.container{
+text-align: center;
+}
+
+button{
+    width: 100px;
+    height: 75px;
+    margin: 20px;
+    background-color: rgb(171, 221, 169);
+    border-radius: 5%;
+    border-color: whitesmoke;
+    font-size: 18px;
+}
